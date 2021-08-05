@@ -1,0 +1,815 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*css3*/
+}
+
+body {
+
+    
+    font-family: "PT sana" , sans-serif;
+}
+
+:root {
+    --maincolor: #7b5244;
+    --subcolor:#333;
+}
+
+/*علشان الصفحة تبدا من النص*/
+.container {
+    width: 80%;
+    margin: auto ;
+}
+
+a {
+    text-decoration: none;/*الخط اللي تحت القائمة*/
+}
+
+.list-unstyled {
+    list-style: none;
+}
+
+.section-padding {
+    padding: 40px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.section-header .line {
+    display: block;
+    width: 100px;
+    margin: auto;
+    height: 2px;
+    background: var(--maincolor);
+    transition: width 0.5s;
+
+}
+
+.section-header:hover .line {
+    width: 150px;
+}
+
+
+/*header*/
+
+header {
+    padding: 30px 0;
+   
+}
+.header-content img {
+    flex: 1;
+    max-width: 170px;
+}
+
+
+
+.header-content nav {
+    flex: 3;
+    text-align: center;
+
+}
+.header-content .login {
+    flex: 1; /*grow -shrink-basis*/
+    text-align: right;
+}
+header .header-content {
+    display: flex;/* الاب تجي بجنب بعض تاخذ حدودها فقط*/
+    justify-content: space-between; /*يقسمها لثلاث اللي فوق */
+    align-items: center;/*بالوسط*/
+    
+}
+
+.header-content ul li {
+    display: inline-block; /*القائمه تجي بجنب بعض لانها تعطي كل واحد سطر*/
+   
+}
+.header-content ul li,
+.header-content ul li a {
+    color: var(--subcolor);
+}
+.header-content nav ul li .link-item {
+    padding: 10px 20px;
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+  
+}
+
+.header-content nav ul li .link-item:before ,
+.header-content nav ul li .link-item:after {
+    content: "";
+    position:absolute;
+    border-color: var(--maincolor);
+    border-style: solid;
+    top: 0;
+    left: 0;
+    transition: transform 0.2s;
+  
+   
+}
+
+.header-content nav ul li .link-item:before {
+    border-width: 0 2px;/*علشان التأثير يكون بالبداية يمين ويسار ثم فوق وتحت*/
+    width: 97%;
+    transform: scale3d(1, 0, 1); /* و يبدا يمين ثم يسار واحط اللي بالنص 0علشان يختفي*/
+    height: 100%; 
+}
+
+
+.header-content nav ul li .link-item:hover:before {
+    transform: scale3d(1, 1, 1);
+}
+
+.header-content nav ul li .link-item:after {
+    border-width: 2px 0;/*علشان التأثير يكون بالبداية يمين ويسار ثم فوق وتحت*/
+    height: 91%;
+    width: 100%;
+    transform: scale3d(1, 0, 1); /* و يبدا يمين ثم يسار واحط اللي بالنص 0علشان يختفي*/
+    transform-origin: left;
+
+}
+.header-content nav ul li .link-item:hover:after {
+    transform: scale3d(1, 1, 1);
+    transition-delay: 0.2s;
+}
+
+
+
+.header-content .login ul li {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.header-content .login ul li:last-child i {
+    position: relative;
+}
+/*علشان اللي فوق السلة قيمة صفر*/
+.header-content .login ul li:last-child i:after {
+    position: absolute;
+    content: "0";
+    background: var(--maincolor);
+    color: #fff;
+    bottom: 0px;
+    right: -4px;
+    border-radius: 50px;
+    padding: 3px;
+    font-size: 13px;
+}
+
+
+
+
+
+/*dropdown*/
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu ,
+.dropdown-menu1 ,
+.dropdown-menu2 {
+    position: absolute;
+    border: 2px solid var(--maincolor);
+    padding: 15px;
+    margin-top: 35px;
+    background: #fff;
+    transform: scale(0);/*اخفاء*/
+    visibility: hidden;/*علشان لما يختفي او احدث الفصحه ماتطلع*/
+    opacity: 0;
+    transition: transform 0.5s,  visibility 0.5s ; /*علشان تكون بنفس الراحه */
+}
+
+.dropdown-menu {
+    width: 450px;}
+
+.dropdown-menu1 {
+    width: 150px;
+}
+
+.dropdown-menu2 {
+    width: 300px;
+}
+.dropdown:hover .dropdown-menu ,
+.dropdown:hover .dropdown-menu1 ,
+.dropdown:hover .dropdown-menu2 {
+    transform: scale(1);/*تطلع*/
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+
+.dropdown-menu ul ,
+.dropdown-menu1 ul ,
+.dropdown-menu2 ul{
+    display: table-cell;
+    text-align: left;
+    
+}
+
+.dropdown-menu ul li:first-child a ,
+.dropdown-menu1 ul li:first-child a ,
+.dropdown-menu2 ul li:first-child a
+{
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--maincolor);
+}
+
+.dropdown-menu ul li ,
+.dropdown-menu1 ul li ,
+.dropdown-menu2 ul li {
+    line-height: 1.7;
+}
+
+
+/*الصورة*/
+
+
+
+/*slider*/
+
+.slider .item-img img  {
+    width: 100%;
+    
+   
+}
+
+/*كلها لنقاط اللي تحت الصورة*/
+.img-bollets {
+    text-align:center;
+    list-style: none;
+}
+.img-bollets li.active {
+    background-color: var(--maincolor);
+
+}
+.img-bollets li:hover {/*لما اشاور على الدائرة يتغير اللون*/
+    background-color: var(--maincolor);
+
+}
+.img-bollets li {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    margin: 10px 5px;
+    border-radius: 50%;
+
+}
+
+
+/*category*/ 
+/*استخدمها علشان تجي بجنب بعض grid*/
+.category-items {
+    display: grid;
+    grid-template-columns: auto auto auto auto;/*لان عندي اربع صور*/
+   /* grid-template-columns: repeat(4, 1fr)   نفس اللي فوق بس هذا اختصار*/
+    grid-gap: 20px; /*علشان المسافة بين الصور*/
+}
+
+.category-item {
+    position: relative;
+}
+
+.category-items img {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.category-item-subtitle {
+    color: gray;
+    font-weight: normal; /*علشان الخط لو انه h3 مايصير عريض او بولج*/
+}
+
+.category-item .icon {
+    width: 30px;
+    height: 30px;
+    background: var(--maincolor);
+    color: #fff;
+    text-align: center;
+    display: block;/*لانها انلاين*/
+    line-height: 30px; /*علشان السهم يكون بالنص واقدر اتحكم فيه يكون نفس قبلس العرض والارتفاع*/
+    position: absolute;
+    /*علشان احطه يميين فوق */
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s;
+}
+
+.category-item:hover .icon {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+/*discount*/
+
+.discount  {
+    margin: 30px 0;
+    display: flex; }
+
+
+
+    /*ماضبطت ب grid اجرب flex */
+   /* display: grid;*/
+  /*  grid-template-columns: auto auto auto auto;هي المفترض 3 لكن علشان وحده ابيها عن اثنين اللي على اليسار*/
+
+/*اجي هنا علشان اوضح له اقول يدا من 1/3 بحيث ياخذ عن 2*/
+.discount-desc {
+  /*  grid-column: 1/3;     لو استخدمت grid اخذ ذي*/
+
+  flex: 2;/*اخذ عن 2 يعني مربعيين */
+  background-color: #f7f3ef;
+  padding: 20px;
+  position: relative;
+}
+
+.discount-desc .top {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 20px;
+
+}
+
+
+
+.discount-desc .top .icon {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 60px;
+    color: var(--maincolor);
+}
+
+.discount-desc .top + p {
+    line-height: 1.7;
+    color: gray;
+    font-size: 15px;
+}
+
+
+
+.discount-desc .top .discount-subtitle {
+    color: gray;
+    font-size: 14px;
+    margin: 10px;
+     
+  
+    
+}
+.discount-desc .top .discount-title {
+ margin: 10px;
+}
+
+
+
+
+.discount-desc .bolletes {
+  text-align: right;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+ 
+}
+
+.discount-desc .bolletes span {
+    display: inline-block;
+    width: 50px;
+    height: 4px;
+    background-color: #e8e8e8;
+    margin-left: 10px;
+   
+}
+
+
+
+.discount-desc .bolletes span.active {
+    background-color: var(--maincolor);
+
+}
+.discount-desc .bolletes span:hover {/*لما اشاور على الدائرة يتغير اللون*/
+    background-color: var(--maincolor);
+}
+
+
+
+
+
+.discount-item {
+    flex: 1;
+    height: 300px;
+    position: relative;
+}
+
+
+.discount-item-info {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+.discount-item-info h3 {
+    font-weight: normal;
+    color: var(--maincolor);
+}
+
+
+.discount-item-info h2 {
+    font-size: 20px;
+}
+
+
+
+.discount-item:nth-child(2) {
+    background-image: url(../images/cms-banner-1.jpg);
+    background-size: cover;
+    margin: 0 20px;
+}
+
+
+.discount-item:nth-child(3) {
+    background-image: url(../images/cms-banner-2.jpg);
+    background-size: cover;
+ 
+}
+
+
+
+
+/*sprites*/
+
+.sprites {
+    display: flex;
+    margin-bottom: 30px;
+  padding-top: 45px;
+}
+hr {
+    border: 1px solid rgb(221, 215, 215);
+}
+
+.sprites-item {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid var(--maincolor);
+}
+
+.sprites-icon {
+    background-image: url(../images/service-icon.png);
+    height: 55px;
+    background-repeat: no-repeat;
+
+
+}
+.sprites-icon-1 {
+    background-position: center 5px;
+    transition: all 0.5s;
+}
+
+.sprites-item:hover .sprites-icon-1 {
+    background-position: center -86px;
+}
+
+
+.sprites-icon-2 {
+    background-position: center -180px;
+    transition: all 0.5s;
+}
+
+.sprites-item:hover .sprites-icon-2 {
+    background-position: center -269px;
+}
+
+
+
+.sprites-icon-3 {
+    background-position: center -366px;
+    transition: all 0.5s;
+}
+
+.sprites-item:hover .sprites-icon-3 {
+    background-position: center -456px;
+}
+
+
+
+.sprites-icon-4 {
+    background-position: center -549px;
+    transition: all 0.5s;
+}
+
+
+.sprites-item:hover .sprites-icon-4 {
+    background-position: center -640px;
+}
+
+
+.sprites-icon-5 {
+    background-position: center -734px;
+    transition: all 0.5s;
+}
+
+
+.sprites-item:hover .sprites-icon-5 {
+    background-position: center -824px;
+}
+
+
+
+
+
+.sprites-item:last-child {
+    border: 0;
+}
+
+
+.sprites-info h3 {
+    font-size: 17px;
+}
+
+.sprites-info span {
+    color: gray;
+    font-size: 15px;
+}
+
+
+
+/*prodcts*/
+
+.prodcts {
+   
+}
+
+.list-products {
+    display: flex;
+    justify-content: center;
+}
+
+.list-products li {
+    margin: 10px 20px; /*القائمة اللي تحت العنوان*/
+    color: var(--maincolor);
+}
+
+
+.prodcts-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);/*تجي بجنب بعض*/
+    grid-gap: 20px;
+}
+
+.prodct-img { /*الصورة الاساس */
+    position: relative;
+}
+
+.prodct-overlay { /*لماة اسوي هوفر تطلع الصورة*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(0); /*هنا علشان الصورة الاساس تكون فوق */
+    transition: transform 0.2s;
+    opacity: 0.9; /*تصير مضللة بشكل خفيف*/
+}
+.prodct-overlay ul { /*لماة اسوي هوفر تطلع الايقونة*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%); /*تجي بالنص */
+   
+}
+
+.prodct-overlay ul li {
+    width: 40px;
+    height: 40px;
+    background: var(--maincolor);
+    display: inline-block; /*بجنب بعض*/
+    text-align: center;
+}
+
+.prodct-overlay ul li i {
+    color: #fff;
+    line-height: 40px; /*الايقونز يكون بالنص بالضبط*/
+}
+
+.prodct-item:hover .prodct-overlay {
+    transform: scale(1);
+
+}
+
+.prodct-item i.active{
+ color: rgb(250, 214, 54);
+}
+
+
+.product-info i {
+    margin-top: 10px; 
+}
+.product-info span {
+    display: block;
+    margin: 5px 0; 
+}
+
+/*feb28*/
+
+
+
+
+.feb .feb-img img {
+    height: 330px;
+    margin-right: 20px;
+    flex: 1;
+    
+    }
+    
+
+.feb {
+    margin: 30px 0;
+    display: flex; 
+
+}
+
+.feb-desc {
+    /*  grid-column: 1/3;     لو استخدمت grid اخذ ذي*/
+  
+    flex: 2;/*اخذ عن 2 يعني مربعيين */
+    background-color: #f7f3ef;
+    padding: 20px;
+  }
+
+  .feb-desc .top-28 {
+    position: relative;
+    padding: 0px 60px;
+    margin: 30px;
+  
+
+}
+
+
+.feb-desc .top-28 .feb1 {
+    color: var(--maincolor);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 50px;
+    
+
+}
+
+
+.feb-desc .top-28 h2 {
+    margin: 10px;
+    font-size: 20px;
+    right: 0px;
+  
+    
+}
+   
+
+
+.feb-desc .top-28 .feb-subtitle {
+    font-size: 15px;
+    color: var(--maincolor);
+    margin: -60px;
+    
+}
+
+
+
+
+.feb-desc .top-28 + p {
+    line-height: 1.7;
+    color: gray;
+    font-size: 15px;
+    margin: 27px;
+
+   
+ }
+
+.feb-desc .bolletes {
+  text-align: right;
+  position: absolute;
+  
+ 
+}
+
+.feb-desc .bolletes span {
+    display: inline-block;
+    width: 50px;
+    height: 4px;
+    background-color: #e8e8e8;
+    margin-left: 10px;
+   
+}
+
+
+
+.feb-desc .bolletes span.active {
+    background-color: var(--maincolor);
+
+}
+.feb-desc .bolletes span:hover {/*لما اشاور على الدائرة يتغير اللون*/
+    background-color: var(--maincolor);
+}
+
+
+
+
+
+
+/*desc-img1 */
+
+section .desc-img1 {
+    display: grid;
+   padding: 40px;
+   grid-template-columns: repeat(6, 1fr);
+   grid-gap: 10px; 
+    
+}
+    
+
+
+/*footer*/
+footer .footer-desc {
+    display: grid;
+   padding: 40px;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px; 
+  
+    
+}
+
+footer{
+    background-color: black;
+    height: 500px;
+    width: 100%;
+    
+ 
+}
+
+.footer-img ul li .img1 {
+    margin-bottom: 70px;
+}
+
+
+
+
+.footer-img ul li.Help {
+    color: gray;
+    margin-bottom: 35px;
+    font-size: 15px;
+   
+}
+
+
+
+.footer-desc1 .footer-info1 {
+    color: #fff;
+padding-bottom: 20px;
+text-align: left;
+
+
+}
+
+
+.footer-desc1 .Help {
+    padding: 20px;
+color: gray; }
+
+.footer-desc1 {
+    transform: translate(20% , 25%);
+    text-align: left;
+}
+
+.footer-desc1 .Help:hover {
+    color: #fff;
+}
+
+
+.footer-desc1 .icon li a {
+    color:gray;
+    font-size: 25px;
+    
+    margin: 0px 5px;
+   
+
+}
+
+.icon li {
+    display: inline-block;
+}
+
+
